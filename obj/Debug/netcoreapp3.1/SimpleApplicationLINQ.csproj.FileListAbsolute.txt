@@ -1,0 +1,13 @@
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.csprojAssemblyReference.cache
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.AssemblyInfoInputs.cache
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.AssemblyInfo.cs
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.csproj.CoreCompileInputs.cache
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.exe
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.deps.json
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.runtimeconfig.json
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.runtimeconfig.dev.json
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.dll
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\bin\Debug\netcoreapp3.1\SimpleApplicationLINQ.pdb
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.dll
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.pdb
+F:\03 Studia\03_03 Platformy Technologiczne\Laboratorium 03\SimpleApplicationLINQ\obj\Debug\netcoreapp3.1\SimpleApplicationLINQ.genruntimeconfig.cache
