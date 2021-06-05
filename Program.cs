@@ -4,6 +4,8 @@ using System.Linq;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 class Program
 {
@@ -23,12 +25,16 @@ class Program
     {
         Exc1();
         Exc2();
+        Exc3();
+        Exc4();
+        Exc5();
 
     }
 
     public static void Exc1()
     {
-        Console.WriteLine(" -- Exercise 1 -- \n" );
+        Console.WriteLine(" -- Exercise 1 -- " );
+        Console.WriteLine();
 
         var tmpProjectionNo1 = from c in myCars
                                where c.model == "A6"
@@ -56,10 +62,11 @@ class Program
     public static void Exc2()
     {
         Console.WriteLine(" -- Exercise 2 -- ");
+        Console.WriteLine();
 
-        var file = "myCarsCollection.xml";
-        var pathDirectory = Directory.GetCurrentDirectory();
-        var pathFile = Path.Combine(pathDirectory, file);
+        string file = "myCarsCollection.xml";
+        string pathDirectory = Directory.GetCurrentDirectory();
+        string pathFile = Path.Combine(pathDirectory, file);
         // Console.WriteLine(pathFile);
         Serialize(pathFile);
         Deserialize(pathFile);
@@ -77,15 +84,83 @@ class Program
     public static void Deserialize(string __path)
     {
         XmlSerializer ser = new XmlSerializer(typeof(List<Car>), new XmlRootAttribute("cars"));
-
         using Stream reader = new FileStream(__path, FileMode.Open);
         List<Car> tmpMyCars = (List<Car>)ser.Deserialize(reader);
-
 
         foreach(var t in tmpMyCars)
         {
             Console.WriteLine(t.model + " " + t.motor.model + " " + t.motor.horsePower + " " + t.motor.displacement + " " + t.year);
         }
+        Console.WriteLine();
+    }
+
+    public static void Exc3()
+    {
+        Console.WriteLine(" -- Exercise 3 -- ");
+        Console.WriteLine();
+
+        XElement rootNode = XElement.Load("myCarsCollection.xml");
+        double avgHP = (double)rootNode.XPathEvaluate("sum(//car/engine[@model!='TDI']/horsePower) div count(//car/engine[@model!='TDI'])");
+        Console.WriteLine("Średnia moc samochód z silnikami innymi niż TDI to: " + avgHP);
+        Console.WriteLine();
+
+        IEnumerable<XElement> models = rootNode.XPathSelectElements("//car/model[not(. = ../following-sibling::car/model)]");
+
+        Console.WriteLine("Modele samochodów bez powtórzeń:");
+        foreach (var m in models)
+        {
+            Console.WriteLine(m.Value);
+        }
+        Console.WriteLine();
+    }
+
+    public static void Exc4()
+    {
+        Console.WriteLine(" -- Exercise 4 -- ");
+        Console.WriteLine();
+
+        Console.WriteLine("Wygenerowano plik XML");
+        Console.WriteLine();
+        createXmlFromLinq();
+    }
+
+    private static void createXmlFromLinq()
+    {
+        //LINQ query expressions 
+        IEnumerable<XElement> nodes = myCars.Select(c =>
+                new XElement("car",
+                    new XElement("model", c.model),
+                    new XElement("engine",
+                        new XAttribute("model", c.motor.model),
+                        new XElement("displacement", c.motor.displacement),
+                        new XElement("horsePower", c.motor.horsePower)),
+                    new XElement("year", c.year)));
+
+        //create a root node to contain 
+        XElement rootNode = new XElement("cars", nodes);
+        rootNode.Save("myCarsFromLinq.xml");
+    }
+
+    public static void Exc5()
+    {
+        Console.WriteLine(" -- Exercise 5 -- ");
+        Console.WriteLine();
+
+        var style = new XAttribute("style", "border: 1px solid black");
+        IEnumerable<XElement> tab = myCars.Select(c =>
+                 new XElement("tr", 
+                 new XElement("td", c.model),
+                 new XElement("td", c.motor.model),
+                 new XElement("td", c.motor.displacement),
+                 new XElement("td", c.motor.horsePower),
+                 new XElement("td", c.year)));
+
+        XDocument table = XDocument.Load("template.html");
+        table.Element("{http://www.w3.org/1999/xhtml}html").Add(new XElement("table", style, tab));
+        table.Save("table.html");
+
+        Console.WriteLine("Wygenerowano tablice");
+        Console.WriteLine();
     }
 }
 
